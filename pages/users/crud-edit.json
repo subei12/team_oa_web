@@ -1,0 +1,86 @@
+{
+  "type": "page",
+  "title": "修改 ${params.id}",
+  "remark": null,
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/users/crud/list",
+      "label": "返回列表"
+    }
+  ],
+  "body": [
+    {
+      "type": "form",
+      "initApi": "/api/user/${params.id}",
+      "api": "put:/api/user/$id",
+      "redirect": "/users/crud/list",
+      "controls": [
+        {
+          "label": "社区用户ID",
+          "type": "text",
+          "name": "hlxUserId",
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "社区用户ID",
+            "content": "社区用户ID，不可为空"
+          },
+          "description": "",
+          "required": true,
+          "validations": {},
+          "options": [],
+          "addOn": null,
+          "autoComplete": ""
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "社区用户昵称",
+          "name": "hlxUserNick",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "昵称",
+            "content": "这个不是很重要，但说不定以后会用来模糊查询。"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "联系QQ（必填）",
+          "name": "qq",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "QQ",
+            "content": "联系QQ，这个是必须的，一定要填。"
+          },
+          "validations": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>注册 - Team OA - 酒葫芦</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/amis@1.1.5/sdk/sdk.css" />
+    <!-- 从 1.1.0 开始 sdk.css 将不支持 IE 11，如果要支持 IE11 请引用这个 css，并把前面那个删了 -->
+    <!-- <link rel="stylesheet" href="sdk-ie11.css" /> -->
+    <!-- 不过 amis 开发团队几乎没测试过 IE 11 下的效果，所以可能有细节功能用不了，如果发现请报 issue -->
+    <style>
+        html,
+        body,
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="app-wrapper"></div>
+<script src="https://cdn.jsdelivr.net/npm/amis@1.1.5/sdk/sdk.js"></script>
+<script type="text/javascript">
+    (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+            "type": "form",
+            "title": "注册&修改密码",
+            "controls": [
+                {
+                    "label": "密码",
+                    "type": "password",
+                    "name": "passWord",
+                    "required": true,
+                    "description": "",
+                    "labelRemark": {
+                        "icon": "fa fa-question-circle",
+                        "trigger": [
+                            "hover",
+                            "focus"
+                        ],
+                        "className": "Remark--warning",
+                        "title": "密码需要>=6位，且<=18位"
+                    }
+                },
+                {
+                    "type": "password",
+                    "label": "确认密码",
+                    "name": "passWord1",
+                    "required": true,
+                    "labelRemark": {
+                        "icon": "fa fa-question-circle",
+                        "trigger": [
+                            "hover",
+                            "focus"
+                        ],
+                        "className": "Remark--warning",
+                        "title": "密码需要>=6位，且<=18位"
+                    }
+                },
+                {
+                    "type": "text",
+                    "label": "绑定QQ",
+                    "name": "qq",
+                    "required": true,
+                    "remark": null,
+                    "labelRemark": {
+                        "icon": "fa fa-question-circle",
+                        "trigger": [
+                            "hover",
+                            "focus"
+                        ],
+                        "className": "Remark--warning",
+                        "title": "由团队管理员添加，不管是否存在都不会提示；有相关信息才会发送邮件，如未收到请检查垃圾箱或者联系所属团队负责人录入信息。"
+                    },
+                    "addOn": {
+                        "label": "发送验证码",
+                        "type": "button",
+                        "countDown": 60,
+                        "countDownTpl": "${timeLeft} 秒后重发",
+                        "actionType": "ajax",
+                        "api": "post:/api/sendMailCode?qq=${qq}",
+                        "disabledOn": "data.qq == null"
+                    },
+                    "validations": {}
+                },
+                {
+                    "type": "text",
+                    "label": "验证码",
+                    "name": "code",
+                    "required": true,
+                    "labelRemark": {
+                        "icon": "fa fa-question-circle",
+                        "trigger": [
+                            "hover",
+                            "focus"
+                        ],
+                        "className": "Remark--warning",
+                        "title": "请输入收到的邮件验证码。"
+                    }
+                }
+            ],
+            "api": {
+                "method": "post",
+                "url": "api/register",
+                "data": {
+                    "passWord": "${passWord}",
+                    "passWord1": "${passWord1}",
+                    "qq": "${qq}",
+                    "code": "${code}"
+                }
+            },
+            "redirect": "./login.html",
+            "submitText": "注册",
+            "affixFooter": false
+        };
+        let amisScoped = amis.embed('#root', amisJSON);
+    })();
+</script>
+
+<script type="text/javascript">
+    ;(function () {
+        if ( typeof window.CustomEvent === "function" ) return false;
+
+        function CustomEvent ( event, params ) {
+            params = params || { bubbles: false, cancelable: false, detail: undefined };
+            var evt = document.createEvent( 'CustomEvent' );
+            evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+            return evt;
+        }
+
+        CustomEvent.prototype = window.Event.prototype;
+
+        window.CustomEvent = CustomEvent;
+    })();
+    ;(function () {
+        function ajaxEventTrigger(event) {
+            var ajaxEvent = new CustomEvent(event, { detail: this });
+            window.dispatchEvent(ajaxEvent);
+        }
+
+        var oldXHR = window.XMLHttpRequest;
+
+        function newXHR() {
+            var realXHR = new oldXHR();
+
+            realXHR.addEventListener('abort', function () { ajaxEventTrigger.call(this, 'ajaxAbort'); }, false);
+
+            realXHR.addEventListener('error', function () { ajaxEventTrigger.call(this, 'ajaxError'); }, false);
+
+            realXHR.addEventListener('load', function () { ajaxEventTrigger.call(this, 'ajaxLoad'); }, false);
+
+            realXHR.addEventListener('loadstart', function () { ajaxEventTrigger.call(this, 'ajaxLoadStart'); }, false);
+
+            realXHR.addEventListener('progress', function () { ajaxEventTrigger.call(this, 'ajaxProgress'); }, false);
+
+            realXHR.addEventListener('timeout', function () { ajaxEventTrigger.call(this, 'ajaxTimeout'); }, false);
+
+            realXHR.addEventListener('loadend', function () { ajaxEventTrigger.call(this, 'ajaxLoadEnd'); }, false);
+
+            realXHR.addEventListener('readystatechange', function() { ajaxEventTrigger.call(this, 'ajaxReadyStateChange'); }, false);
+
+
+            let send = realXHR.send;
+            realXHR.send = function(...arg){
+                send.apply(realXHR,arg);
+                realXHR.body = arg[0];
+                ajaxEventTrigger.call(realXHR, 'ajaxSend');
+            }
+
+            let open = realXHR.open;
+            realXHR.open = function(...arg){
+                open.apply(realXHR,arg)
+                realXHR.method = arg[0];
+                realXHR.orignUrl = arg[1];
+                realXHR.async = arg[2];
+                ajaxEventTrigger.call(realXHR, 'ajaxOpen');
+            }
+
+            let setRequestHeader = realXHR.setRequestHeader;
+            realXHR.requestHeader = {};
+            realXHR.setRequestHeader = function(name, value){
+                realXHR.requestHeader[name] = value;
+                setRequestHeader.call(realXHR,name,value)
+            }
+            return realXHR;
+        }
+
+        window.XMLHttpRequest = newXHR;
+
+    })();
+
+
+</script>
+
+</body>
+</html>

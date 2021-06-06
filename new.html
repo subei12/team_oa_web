@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>提交黑名单 - 黑名单查询 - 酒葫芦</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/amis@1.1.7/sdk/sdk.css" />
+    <!-- 从 1.1.0 开始 sdk.css 将不支持 IE 11，如果要支持 IE11 请引用这个 css，并把前面那个删了 -->
+    <!-- <link rel="stylesheet" href="sdk-ie11.css" /> -->
+    <!-- 不过 amis 开发团队几乎没测试过 IE 11 下的效果，所以可能有细节功能用不了，如果发现请报 issue -->
+    <style>
+        html,
+        body,
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="app-wrapper"></div>
+<script src="https://cdn.jsdelivr.net/npm/amis@1.1.7/sdk/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/amis@1.1.7/sdk/tinymce.js"></script>
+<script type="text/javascript">
+    (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+                "type": "page",
+                "title": "提交黑名单",
+                "remark": null,
+                "name": "page-demo",
+                "toolbar": [
+                    {
+                        "type": "button",
+                        "label": "返回列表",
+                        "icon": "fa",
+                        "primary": true,
+                        "actionType": "link",
+                        "link": "/index.html"
+                    }
+                ],
+                "body": [
+                    {
+                        "type": "form",
+                        "name": "sample-edit-form",
+                        "api": "post:/api/webDetail",
+                        "controls": [
+                            {
+                                "label": "网站域名",
+                                "type": "text",
+                                "name": "webPath",
+                                "labelRemark": {
+                                    "icon": "fa fa-question-circle",
+                                    "trigger": [
+                                        "hover",
+                                        "focus"
+                                    ],
+                                    "className": "Remark--warning",
+                                    "title": "网站域名"
+                                },
+                                "description": "",
+                                "required": true,
+                                "validations": {},
+                                "options": [],
+                                "addOn": null,
+                                "autoComplete": ""
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "type": "text",
+                                "label": "网站名称",
+                                "name": "webName",
+                                "required": true,
+                                "remark": null,
+                                "labelRemark": {
+                                    "icon": "fa fa-question-circle",
+                                    "trigger": [
+                                        "hover",
+                                        "focus"
+                                    ],
+                                    "className": "Remark--warning",
+                                    "title": "网站名称"
+                                },
+                                "validations": {}
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "type": "email",
+                                "label": "提交邮箱",
+                                "name": "email",
+                                "required": true,
+                                "remark": null,
+                                "labelRemark": {
+                                    "icon": "fa fa-question-circle",
+                                    "trigger": [
+                                        "hover",
+                                        "focus"
+                                    ],
+                                    "className": "Remark--warning",
+                                    "title": "提交邮箱"
+                                },
+                                "addOn": {
+                                    "label": "发送验证码",
+                                    "type": "button",
+                                    "countDown": 60,
+                                    "countDownTpl": "${timeLeft} 秒后重发",
+                                    "actionType": "ajax",
+                                    "api": "post:/api/sendMailCode?email=${email}",
+                                    "disabledOn": "data.email == null"
+                                },
+                                "validations": {}
+                            },
+                            {
+                                "type": "text",
+                                "name": "code",
+                                "label": "邮箱验证码",
+                                "required": true
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "label": "选择分类",
+                                "type": "select",
+                                "labelClassName": "text-muted",
+                                "name": "webSortId",
+                                "required": true,
+                                "inline": true,
+                                "source": "get:/api/webSorts"
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "type": "rich-text",
+                                "name": "webRemarks",
+                                "label": "举报原因/理由"
+                            }
+                        ],
+                        "redirect": "/index.html",
+                        "submitText": "提交"
+                    }
+                ]
+            }
+        ;
+        let amisScoped = amis.embed('#root', amisJSON);
+    })();
+</script>
+</body>
+</html>

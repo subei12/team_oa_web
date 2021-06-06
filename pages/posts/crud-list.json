@@ -1,0 +1,149 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/posts/crud/new",
+      "label": "新增",
+      "primary": true
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/post",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+          {
+            "type": "text",
+            "name": "userId",
+            "label": "社区用户ID",
+            "placeholder": "葫芦侠（社区）用户ID",
+            "clearable": true
+          },
+          {
+            "type": "submit",
+            "label": "搜索"
+          }
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量修改",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "/api/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "label": "批量删除",
+          "type": "button",
+          "level": "danger",
+          "actionType": "ajax",
+          "api": "delete:/api/user/$ids",
+          "confirmText": "确定要批量删除?"
+        }
+      ],
+      "columns": [
+        {
+          "name": "postId",
+          "label": "帖子ID",
+          "sortable": true
+        },
+        {
+          "name": "title",
+          "label": "标题",
+          "sortable": true
+        },
+        {
+          "name": "hit",
+          "label": "浏览量",
+          "sortable": true
+        },
+        {
+          "name": "praise",
+          "label": "赞",
+          "sortable": true
+        },
+        {
+          "name": "commentCount",
+          "label": "回复数",
+          "sortable": true
+        },
+        {
+          "name": "source",
+          "label": "葫芦(仅为帖子挂红的数量)",
+          "sortable": true
+        },
+        {
+          "name": "isGood",
+          "label": "是否精帖",
+          "sortable": true
+        },
+        {
+          "name": "createTime",
+          "label": "发帖时间",
+          "sortable": true
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "结算",
+                  "level": "primary",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要结算吗?",
+                  "api": "post:/api/post/$postId"
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}

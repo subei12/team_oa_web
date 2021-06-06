@@ -1,0 +1,87 @@
+{
+  "status": 0,
+  "msg": "",
+  "data": {
+    "pages": [
+      {
+        "label": "Home",
+        "url": "/",
+        "redirect": "/posts/crud"
+      },
+      {
+        "label": "基础管理区",
+        "children": [
+          {
+            "label": "帖子管理（结算）",
+            "url": "/posts/crud",
+            "rewrite": "/posts/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/posts/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/posts/crud-list.json"
+              }
+            ]
+          },
+          {
+            "label": "团队人员管理",
+            "url": "/users/crud",
+            "rewrite": "/users/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/users/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/users/crud-list.json"
+              },
+              {
+                "label": "新增",
+                "url": "/users/crud/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/users/crud-new.json"
+              },
+              {
+                "label": "查看",
+                "url": "/users/crud/:id",
+                "schemaApi": "get:/pages/users/crud-view.json"
+              },
+              {
+                "label": "修改",
+                "url": "/users/crud/:id/edit",
+                "schemaApi": "get:/pages/users/crud-edit.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "分组2",
+        "children": [
+          {
+            "label": "用户管理",
+            "schema": {
+              "type": "page",
+              "title": "用户管理",
+              "body": "页面C"
+            }
+          },
+          {
+            "label": "外部链接",
+            "link": "http://baidu.gitee.io/amis"
+          },
+          {
+            "type": "button",
+            "label": "退出登录",
+            "level": "danger",
+            "actionType": "ajax",
+            "confirmText": "您确认要删除?",
+            "api": "delete:/api/user/$id"
+          }
+        ]
+      }
+    ]
+  }
+}

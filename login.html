@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>登录 - Team OA - 酒葫芦</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/amis@1.1.5/sdk/sdk.css" />
+    <!-- 从 1.1.0 开始 sdk.css 将不支持 IE 11，如果要支持 IE11 请引用这个 css，并把前面那个删了 -->
+    <!-- <link rel="stylesheet" href="sdk-ie11.css" /> -->
+    <!-- 不过 amis 开发团队几乎没测试过 IE 11 下的效果，所以可能有细节功能用不了，如果发现请报 issue -->
+    <style>
+        html,
+        body,
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="app-wrapper"></div>
+<script src="https://cdn.jsdelivr.net/npm/amis@1.1.5/sdk/sdk.js"></script>
+<script type="text/javascript">
+    (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+            "type": "form",
+            "title": "登录",
+            "controls": [
+                {
+                    "label": "账号",
+                    "type": "text",
+                    "name": "userName",
+                    "required": true,
+                    "description": ""
+                },
+                {
+                    "type": "password",
+                    "label": "密码",
+                    "name": "passWord",
+                    "required": true
+                }
+            ],
+            "api": {
+                "method": "get",
+                "url": "api/login",
+                "data": {
+                    "userName": "${userName}",
+                    "passWord": "${passWord}"
+                }
+            },
+            "redirect": "./index.html",
+            "submitText": "登录",
+            "affixFooter": false
+        };
+        let amisScoped = amis.embed('#root', amisJSON);
+    })();
+</script>
+
+<script type="text/javascript">
+    ;(function () {
+        if ( typeof window.CustomEvent === "function" ) return false;
+
+        function CustomEvent ( event, params ) {
+            params = params || { bubbles: false, cancelable: false, detail: undefined };
+            var evt = document.createEvent( 'CustomEvent' );
+            evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+            return evt;
+        }
+
+        CustomEvent.prototype = window.Event.prototype;
+
+        window.CustomEvent = CustomEvent;
+    })();
+    ;(function () {
+        function ajaxEventTrigger(event) {
+            var ajaxEvent = new CustomEvent(event, { detail: this });
+            window.dispatchEvent(ajaxEvent);
+        }
+
+        var oldXHR = window.XMLHttpRequest;
+
+        function newXHR() {
+            var realXHR = new oldXHR();
+
+            realXHR.addEventListener('abort', function () { ajaxEventTrigger.call(this, 'ajaxAbort'); }, false);
+
+            realXHR.addEventListener('error', function () { ajaxEventTrigger.call(this, 'ajaxError'); }, false);
+
+            realXHR.addEventListener('load', function () { ajaxEventTrigger.call(this, 'ajaxLoad'); }, false);
+
+            realXHR.addEventListener('loadstart', function () { ajaxEventTrigger.call(this, 'ajaxLoadStart'); }, false);
+
+            realXHR.addEventListener('progress', function () { ajaxEventTrigger.call(this, 'ajaxProgress'); }, false);
+
+            realXHR.addEventListener('timeout', function () { ajaxEventTrigger.call(this, 'ajaxTimeout'); }, false);
+
+            realXHR.addEventListener('loadend', function () { ajaxEventTrigger.call(this, 'ajaxLoadEnd'); }, false);
+
+            realXHR.addEventListener('readystatechange', function() { ajaxEventTrigger.call(this, 'ajaxReadyStateChange'); }, false);
+
+
+            let send = realXHR.send;
+            realXHR.send = function(...arg){
+                send.apply(realXHR,arg);
+                realXHR.body = arg[0];
+                ajaxEventTrigger.call(realXHR, 'ajaxSend');
+            }
+
+            let open = realXHR.open;
+            realXHR.open = function(...arg){
+                open.apply(realXHR,arg)
+                realXHR.method = arg[0];
+                realXHR.orignUrl = arg[1];
+                realXHR.async = arg[2];
+                ajaxEventTrigger.call(realXHR, 'ajaxOpen');
+            }
+
+            let setRequestHeader = realXHR.setRequestHeader;
+            realXHR.requestHeader = {};
+            realXHR.setRequestHeader = function(name, value){
+                realXHR.requestHeader[name] = value;
+                setRequestHeader.call(realXHR,name,value)
+            }
+            return realXHR;
+        }
+
+        window.XMLHttpRequest = newXHR;
+
+    })();
+
+
+</script>
+<script>
+
+    window.addEventListener("ajaxReadyStateChange",function(e){
+        let xhr = e.detail;
+        if(xhr.readyState == 4 && xhr.status == 200){
+            // xhr.getAllResponseHeaders()  响应头信息
+            // xhr.requestHeader            请求头信息
+            // xhr.responseURL              请求的地址
+            // xhr.responseText             响应内容
+            // xhr.orignUrl                 请求的原始参数地址
+            // xhr.body                     post参数，（get参数在url上面）
+            var object = JSON.parse(xhr.responseText);
+            if(object.status=='0'){
+                localStorage.setItem('Authorization',object.data)
+            }
+        }
+    });
+
+
+
+</script>
+</body>
+</html>
