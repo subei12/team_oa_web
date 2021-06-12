@@ -123,6 +123,11 @@
           "sortable": true
         },
         {
+          "name": "integral",
+          "label": "剩余积分",
+          "sortable": true
+        },
+        {
           "type": "operation",
           "label": "操作",
           "width": "",
