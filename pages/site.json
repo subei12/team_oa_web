@@ -54,6 +54,20 @@
                 "schemaApi": "get:/pages/users/crud-edit.json"
               }
             ]
+          },
+          {
+            "label": "积分兑换",
+            "url": "/integralMall/crud",
+            "rewrite": "/integralMall/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "积分商城",
+                "url": "/integralMall/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/integralMall/crud-list.json"
+              }
+            ]
           }
         ]
       },

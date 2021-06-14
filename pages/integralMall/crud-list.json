@@ -1,0 +1,118 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/integralMall/crud/new",
+      "label": "新增",
+      "primary": true
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "api": "/api/goods",
+      "mode": "cards",
+      "defaultParams": {
+        "perPage": 12
+      },
+      "filter": {
+        "title": "条件搜索",
+        "submitText": "",
+        "controls": [
+          {
+            "type": "text",
+            "name": "keywords",
+            "placeholder": "通过关键字搜索",
+            "addOn": {
+              "label": "搜索",
+              "type": "submit"
+            }
+          },
+          {
+            "type": "plain",
+            "text": "这只是个示例, 目前搜索对查询结果无效."
+          }
+        ]
+      },
+      "bulkActions": [
+        {
+          "label": "批量删除",
+          "actionType": "ajax",
+          "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/${ids|raw}",
+          "confirmText": "确定要批量删除?"
+        },
+        {
+          "label": "批量修改",
+          "actionType": "dialog",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "hidden",
+                  "name": "ids"
+                },
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "draggable": true,
+      "card": {
+        "header": {
+          "title": "$engine",
+          "subTitle": "$platform",
+          "subTitlePlaceholder": "暂未开启兑换，敬请期待。",
+          "avatar": "<%= data.avatar || \"https://internal-amis-res.cdn.bcebos.com/images/2019-12/1575350573496/4873dbfaf6a5.png\" %>",
+          "avatarClassName": "pull-left thumb b-3x m-r"
+        },
+        "actions": [
+          {
+            "type": "button",
+            "label": "兑换",
+            "actionType": "ajax",
+            "confirmText": "还未开启，点也没用。",
+            "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+          }
+        ],
+        "body": [
+          {
+            "name": "goodsName",
+            "label": "名称",
+            "sortable": true,
+            "quickEdit": true
+          },
+          {
+            "name": "goodsDescription",
+            "label": "描述"
+          },
+          {
+            "name": "goodsPrice",
+            "label": "需要积分"
+          },
+          {
+            "name": "goodsCount",
+            "label": "剩余数量"
+          },
+          {
+            "name": "version",
+            "label": "version"
+          }
+        ]
+      }
+    }
+  ]
+}
