@@ -1,0 +1,66 @@
+{
+  "type": "page",
+  "title": "我的兑换记录",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/myGoods",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "columns": [
+        {
+          "name": "goodName",
+          "label": "商品名称",
+          "sortable": true
+        },
+        {
+          "name": "createDate",
+          "label": "兑换时间",
+          "sortable": true
+        },
+        {
+          "name": "count",
+          "label": "兑换数量",
+          "sortable": true
+        },
+        {
+          "name": "state",
+          "label": "状态",
+          "sortable": true,
+          "type": "mapping",
+          "map": {
+            "0": "<span class='label label-warning'>待处理</span>",
+            "1": "<span class='label label-success'>已处理</span>",
+            "2": "<span class='label label-danger'>已驳回</span>"
+          }
+        },
+        {
+          "name": "updateDate",
+          "label": "处理时间",
+          "sortable": true
+        },
+        {
+          "name": "result",
+          "label": "结果（背景码类内容）",
+          "sortable": true
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}

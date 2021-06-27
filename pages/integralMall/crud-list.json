@@ -75,7 +75,7 @@
         "header": {
           "title": "$engine",
           "subTitle": "$platform",
-          "subTitlePlaceholder": "暂未开启兑换，敬请期待。",
+          "subTitlePlaceholder": "兑换开启，试运营中。",
           "avatar": "<%= data.avatar || \"https://internal-amis-res.cdn.bcebos.com/images/2019-12/1575350573496/4873dbfaf6a5.png\" %>",
           "avatarClassName": "pull-left thumb b-3x m-r"
         },
@@ -84,8 +84,8 @@
             "type": "button",
             "label": "兑换",
             "actionType": "ajax",
-            "confirmText": "还未开启，点也没用。",
-            "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+            "confirmText": "确认兑换。",
+            "api": "post:/api/buy/$integralMallId"
           }
         ],
         "body": [

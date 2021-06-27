@@ -1,0 +1,214 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/integralMall/crud/new",
+      "label": "新增",
+      "primary": true
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/goodsLogs",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+          {
+            "type": "text",
+            "name": "username",
+            "label": "username",
+            "placeholder": "username(同QQ号)",
+            "clearable": true
+          },
+          {
+            "name": "state",
+            "label": "状态",
+            "type": "select",
+            "searchable": true,
+            "unique": true,
+            "value": 0,
+            "options": [
+              {
+                "label": "待处理",
+                "value": 0
+              },
+              {
+                "label": "已处理",
+                "value": 1
+              },
+              {
+                "label": "驳回",
+                "disabled": true,
+                "value": 2
+              }
+            ]
+          },
+          {
+            "type": "submit",
+            "label": "搜索"
+          }
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量修改",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "/api/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "label": "批量删除",
+          "type": "button",
+          "level": "danger",
+          "actionType": "ajax",
+          "api": "delete:/api/user/$ids",
+          "confirmText": "确定要批量删除?"
+        }
+      ],
+      "columns": [
+        {
+          "name": "goodName",
+          "label": "商品名称",
+          "sortable": true
+        },
+        {
+          "name": "createDate",
+          "label": "兑换时间",
+          "sortable": true
+        },
+        {
+          "name": "count",
+          "label": "兑换数量",
+          "sortable": true
+        },
+        {
+          "name": "state",
+          "label": "状态",
+          "sortable": true,
+          "type": "mapping",
+          "map": {
+            "0": "<span class='label label-warning'>待处理</span>",
+            "1": "<span class='label label-success'>已处理</span>",
+            "2": "<span class='label label-danger'>已驳回</span>"
+          }
+        },
+        {
+          "name": "result",
+          "label": "结果（背景码类内容）",
+          "sortable": true
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "处理",
+                  "level": "primary",
+                  "actionType": "dialog",
+                  "dialog": {
+                    "title": "在弹框中的表单",
+                    "actions": [
+                      {
+                        "label": "取消",
+                        "actionType": "close",
+                        "type": "button"
+                      },
+                      {
+                        "label": "确认",
+                        "actionType": "confirm",
+                        "type": "button",
+                        "level": "primary"
+                      }
+                    ],
+                    "body": {
+                      "type": "form",
+                      "api": "put:/api/updateGoodsLog/$integralMallLogId",
+                      "title": "常规模式",
+                      "mode": "normal",
+                      "controls": [
+                        {
+                          "name": "state",
+                          "label": "状态",
+                          "type": "select",
+                          "searchable": true,
+                          "unique": true,
+                          "value": 1,
+                          "options": [
+                            {
+                              "label": "待处理",
+                              "value": 0
+                            },
+                            {
+                              "label": "已处理",
+                              "value": 1
+                            },
+                            {
+                              "label": "驳回",
+                              "disabled": true,
+                              "value": 2
+                            }
+                          ]
+                        },
+                        {
+                          "name": "result",
+                          "label": "结果（背景码类内容）",
+                          "sortable": true,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}

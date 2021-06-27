@@ -66,6 +66,18 @@
                 "url": "/integralMall/crud/list",
                 "icon": "fa fa-list",
                 "schemaApi": "get:/pages/integralMall/crud-list.json"
+              },
+              {
+                "label": "我的兑换",
+                "url": "/integralMall/crud/list-my",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/integralMall/crud-list-my.json"
+              },
+              {
+                "label": "兑换处理",
+                "url": "/integralMall/crud/list-update",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/integralMall/crud-list-update.json"
               }
             ]
           }
