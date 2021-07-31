@@ -1,0 +1,170 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/depts/crud/new",
+      "label": "新增",
+      "primary": true
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/dept/budget",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量修改",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "/api/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "label": "批量删除",
+          "type": "button",
+          "level": "danger",
+          "actionType": "ajax",
+          "api": "delete:/api/user/$ids",
+          "confirmText": "确定要批量删除?"
+        }
+      ],
+      "columns": [
+        {
+          "name": "name",
+          "label": "团队名称",
+          "sortable": true
+        },
+        {
+          "name": "createDate",
+          "label": "createDate",
+          "sortable": true
+        },
+        {
+          "name": "createUserId",
+          "label": "创建用户",
+          "sortable": true
+        },
+        {
+          "name": "source",
+          "label": "剩余预算（葫芦）",
+          "sortable": true
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "查看",
+                  "level": "primary",
+                  "actionType": "link",
+                  "link": "/users/crud/${id}"
+                },
+                {
+                  "type": "button",
+                  "label": "修改预算",
+                  "level": "info",
+                  "actionType": "dialog",
+                  "dialog": {
+                    "title": "在弹框中的表单",
+                    "actions": [
+                      {
+                        "label": "取消",
+                        "actionType": "close",
+                        "type": "button"
+                      },
+                      {
+                        "label": "确认",
+                        "actionType": "confirm",
+                        "type": "button",
+                        "level": "primary"
+                      }
+                    ],
+                    "body": {
+                      "type": "form",
+                      "api": "put:/api/dept/$id",
+                      "title": "常规模式",
+                      "mode": "normal",
+                      "controls": [
+                        {
+                          "type": "input-text",
+                          "name": "source",
+                          "label": "修改数量（正为加，负为减）",
+                          "required": true
+                        },
+                        {
+                          "type": "divider"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "text",
+                          "label": "修改原因",
+                          "required": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "label": "删除",
+                  "level": "danger",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要删除?",
+                  "api": "delete:/api/user/$id"
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}

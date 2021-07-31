@@ -80,6 +80,32 @@
                 "schemaApi": "get:/pages/integralMall/crud-list-update.json"
               }
             ]
+          },
+          {
+            "label": "团队管理",
+            "url": "/depts/crud",
+            "rewrite": "/depts/crud/list",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "团队预算管理",
+                "url": "/depts/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/depts/crud-list.json"
+              },
+              {
+                "label": "团队自定义奖励",
+                "url": "/depts/crud/user-reward",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/depts/crud-user-reward.json"
+              },
+              {
+                "label": "奖励日志",
+                "url": "/depts/crud/list-update",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/depts/crud-list-update.json"
+              }
+            ]
           }
         ]
       },
