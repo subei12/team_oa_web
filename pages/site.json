@@ -106,6 +106,32 @@
                 "schemaApi": "get:/pages/depts/crud-list-update.json"
               }
             ]
+          },
+          {
+            "label": "上报管理",
+            "url": "/reports/crud",
+            "rewrite": "/reports/crud/user-reward",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "上报操作",
+                "url": "/reports/crud/user-reward",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/reports/crud-user-report.json"
+              },
+              {
+                "label": "称号上报",
+                "url": "/reports/crud/new/:id",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/reports/crud-new.json"
+              },
+              {
+                "label": "改名上报",
+                "url": "/reports/crud/reName/:id",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/reports/crud-reName.json"
+              }
+            ]
           }
         ]
       },

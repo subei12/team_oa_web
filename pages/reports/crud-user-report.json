@@ -1,0 +1,166 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/users",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+          {
+            "type": "text",
+            "name": "username",
+            "label": "username",
+            "placeholder": "username(同QQ号)",
+            "clearable": true
+          },
+          {
+            "type": "text",
+            "name": "hlxUserId",
+            "label": "社区用户ID",
+            "placeholder": "葫芦侠（社区）用户ID",
+            "clearable": true
+          },
+          {
+            "name": "deptId",
+            "label": "选择团队",
+            "type": "select",
+            "searchable": true,
+            "unique": true,
+            "source": "get:/api/depts"
+          },
+          {
+            "type": "submit",
+            "label": "搜索"
+          }
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量修改",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "/api/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "label": "批量删除",
+          "type": "button",
+          "level": "danger",
+          "actionType": "ajax",
+          "api": "delete:/api/user/$ids",
+          "confirmText": "确定要批量删除?"
+        }
+      ],
+      "columns": [
+        {
+          "name": "username",
+          "label": "userName",
+          "sortable": true
+        },
+        {
+          "name": "createTime",
+          "label": "createDate",
+          "sortable": true
+        },
+        {
+          "name": "hlxUserId",
+          "label": "社区用户ID",
+          "sortable": true
+        },
+        {
+          "name": "hlxUserNick",
+          "label": "社区用户昵称(不准)",
+          "sortable": true
+        },
+        {
+          "name": "qq",
+          "label": "绑定QQ",
+          "sortable": true
+        },
+        {
+          "name": "deptName",
+          "label": "所属团队",
+          "sortable": true
+        },
+        {
+          "name": "roleNames",
+          "label": "角色",
+          "sortable": true
+        },
+        {
+          "name": "integral",
+          "label": "剩余积分",
+          "sortable": true
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "称号",
+                  "level": "primary",
+                  "actionType": "link",
+                  "link": "/reports/crud/new/${id}"
+                },
+                {
+                  "type": "button",
+                  "label": "改名",
+                  "level": "info",
+                  "actionType": "link",
+                  "link": "/reports/crud/reName/${id}"
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}
