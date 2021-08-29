@@ -26,6 +26,20 @@
             ]
           },
           {
+            "label": "我的信息",
+            "url": "/user/info",
+            "rewrite": "/user/my",
+            "icon": "fa fa-cube",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/user/my",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/users/user-my.json"
+              }
+            ]
+          },
+          {
             "label": "团队人员管理",
             "url": "/users/crud",
             "rewrite": "/users/crud/list",

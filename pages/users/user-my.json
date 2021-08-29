@@ -1,0 +1,77 @@
+{
+  "type": "page",
+  "title": "我的信息",
+  "remark": null,
+  "body": [
+    {
+      "title": "",
+      "type": "form",
+      "initApi": "/api/user/my",
+      "redirect": "/reports/crud",
+      "name": "sample-edit-form",
+      "controls": [
+        {
+          "type": "static",
+          "label": "社区用户ID",
+          "name": "hlxUserId"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "用户名（同QQ）",
+          "name": "username"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "绑定QQ",
+          "name": "qq"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "创建时间",
+          "name": "createTime"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "当前用户社区昵称",
+          "name": "nick"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "当前用户社区称号",
+          "name": "title"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "所属团队",
+          "name": "deptName"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "剩余积分",
+          "name": "integral"
+        }
+      ]
+    }
+  ]
+}
