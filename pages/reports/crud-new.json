@@ -48,7 +48,6 @@
           "type": "text",
           "label": "当前社区称号",
           "name": "title",
-          "required": true,
           "remark": null,
           "labelRemark": {
             "icon": "fa fa-question-circle",
