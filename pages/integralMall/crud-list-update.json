@@ -122,6 +122,16 @@
           }
         },
         {
+          "name": "hlxUserId",
+          "label": "兑换用户社区Id",
+          "sortable": true
+        },
+        {
+          "name": "nick",
+          "label": "兑换用户社区昵称",
+          "sortable": true
+        },
+        {
           "name": "result",
           "label": "结果（背景码类内容）",
           "sortable": true
