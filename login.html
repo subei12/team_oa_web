@@ -153,7 +153,7 @@
             // xhr.body                     post参数，（get参数在url上面）
             var object = JSON.parse(xhr.responseText);
             if(object.status=='0'){
-                localStorage.setItem('Authorization',object.data)
+                localStorage.setItem('Authorization',object.data.token)
             }
         }
     });

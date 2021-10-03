@@ -70,6 +70,14 @@
           "type": "static",
           "label": "剩余积分",
           "name": "integral"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "static",
+          "label": "oa账户剩余葫芦",
+          "name": "gourd"
         }
       ]
     }
