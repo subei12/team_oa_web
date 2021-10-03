@@ -123,11 +123,19 @@
               "buttons": [
                 {
                   "type": "button",
-                  "label": "结算",
+                  "label": "结算到社区",
                   "level": "primary",
                   "actionType": "ajax",
-                  "confirmText": "您确认要结算吗?【团队成员守则：1、禁止私下联系，留、诱导对方留联系方式。2、禁止涉及交易相关，没事不要开这个玩笑。3、社区内注意言辞，文明玩耍。】",
-                  "api": "post:/api/post/$postId"
+                  "confirmText": "您确认要结算吗?本次结算到帖子里。【团队成员守则：1、禁止私下联系，留、诱导对方留联系方式。2、禁止涉及交易相关，没事不要开这个玩笑。3、社区内注意言辞，文明玩耍。】",
+                  "api": "post:/api/post/0/$postId"
+                },
+                {
+                  "type": "button",
+                  "label": "结算到OA",
+                  "level": "info",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要结算吗?本次结算到OA账户内，可再“我的信息”内查询剩余葫芦。【团队成员守则：1、禁止私下联系，留、诱导对方留联系方式。2、禁止涉及交易相关，没事不要开这个玩笑。3、社区内注意言辞，文明玩耍。】",
+                  "api": "post:/api/post/1/$postId"
                 }
               ]
             }
