@@ -150,6 +150,41 @@
         ]
       },
       {
+        "label": "配置区",
+        "children": [
+          {
+            "label": "帖子结算前置逻辑",
+            "url": "/setting/postLogic/crud",
+            "rewrite": "/setting/postLogic/crud/list",
+            "icon": "fa fa-magic",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/setting/postLogic/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/setting/postLogic/crud-list.json"
+              },
+              {
+                "label": "新增",
+                "url": "/setting/postLogic/crud/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/setting/postLogic/crud-new.json"
+              },
+              {
+                "label": "查看",
+                "url": "/setting/postLogic/crud/:id",
+                "schemaApi": "get:/pages/setting/postLogic/crud-view.json"
+              },
+              {
+                "label": "修改",
+                "url": "/setting/postLogic/crud/:id/edit",
+                "schemaApi": "get:/pages/setting/postLogic/crud-edit.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "label": "分组2",
         "children": [
           {

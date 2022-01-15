@@ -1,24 +1,27 @@
 {
   "type": "page",
-  "title": "查看详情 ${params.id}",
+  "title": "新增",
   "remark": null,
   "toolbar": [
-    {t
+    {
       "type": "button",
       "actionType": "link",
-      "link": "/depts/crud/list",
+      "link": "/setting/postLogic/crud/list",
       "label": "返回列表"
     }
   ],
   "body": [
     {
+      "title": "",
       "type": "form",
-      "initApi": "/api/user/${params.id}",
+      "redirect": "/setting/postLogic/crud/list",
+      "name": "sample-edit-form",
+      "api": "/api/postLogic",
       "controls": [
         {
-          "label": "社区用户ID",
+          "label": "逻辑",
           "type": "text",
-          "name": "hlxUserId",
+          "name": "logic",
           "labelRemark": {
             "icon": "fa fa-question-circle",
             "trigger": [
@@ -26,8 +29,8 @@
               "focus"
             ],
             "className": "Remark--warning",
-            "title": "社区用户ID",
-            "content": "社区用户ID，不可为空"
+            "title": "帖子前置逻辑",
+            "content": "帖子前置逻辑，支持js表达式，结果需要为boolean类型"
           },
           "description": "",
           "required": true,
@@ -41,8 +44,8 @@
         },
         {
           "type": "text",
-          "label": "社区用户昵称",
-          "name": "hlxUserNick",
+          "label": "逻辑描述",
+          "name": "logicDescription",
           "required": true,
           "remark": null,
           "labelRemark": {
@@ -52,8 +55,8 @@
               "focus"
             ],
             "className": "Remark--warning",
-            "title": "昵称",
-            "content": "这个不是很重要，但说不定以后会用来模糊查询。"
+            "title": "逻辑描述",
+            "content": "用于记录你自己写的表达式是什么意思（注释）。"
           },
           "validations": {}
         },
@@ -62,8 +65,8 @@
         },
         {
           "type": "text",
-          "label": "联系QQ（必填）",
-          "name": "qq",
+          "label": "返回提示",
+          "name": "prompt",
           "required": true,
           "remark": null,
           "labelRemark": {
@@ -73,34 +76,29 @@
               "focus"
             ],
             "className": "Remark--warning",
-            "title": "QQ",
-            "content": "联系QQ，这个是必须的，一定要填。"
+            "title": "返回提示",
+            "content": "返回提示，用户返回给用户的错误提示。"
           },
           "validations": {}
         },
         {
-          "type": "text",
-          "label": "所属团队",
-          "name": "deptName",
+          "type": "radios",
+          "name": "state",
+          "label": "是否启用",
+          "inline": true,
+          "value": 0,
           "required": true,
-          "remark": null,
-          "validations": {}
-        },
-        {
-          "type": "text",
-          "label": "用户创建时间",
-          "name": "createTime",
-          "required": true,
-          "remark": null,
-          "validations": {}
-        },
-        {
-          "type": "text",
-          "label": "用户修改时间",
-          "name": "updateTime",
-          "required": true,
-          "remark": null,
-          "validations": {}
+          "options": [
+            {
+              "label": "启用",
+              "value": 0
+            },
+            {
+              "label": "停用",
+              "value": 2
+            }
+          ],
+          "description": "<span class=\"text-danger\">请仔细检查后再编辑哦</span>"
         }
       ]
     }

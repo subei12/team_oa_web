@@ -1,0 +1,62 @@
+{
+  "type": "page",
+  "title": "查看详情 ${params.id}",
+  "remark": null,
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/setting/postLogic/crud/list",
+      "label": "返回列表"
+    }
+  ],
+  "body": [
+    {
+      "type": "form",
+      "initApi": "/api/postLogic/${params.id}",
+      "submitText": "",
+      "controls": [
+        {
+          "name": "id",
+          "label": "序号",
+          "type": "text"
+        },
+        {
+          "name": "logic",
+          "label": "逻辑",
+          "type": "text"
+        },
+        {
+          "name": "logicDescription",
+          "label": "逻辑描述",
+          "type": "text"
+        },
+        {
+          "name": "prompt",
+          "label": "返回提示",
+          "type": "text"
+        },
+        {
+          "name": "createDate",
+          "label": "创建时间",
+          "type": "text"
+        },
+        {
+          "name": "updateDate",
+          "label": "修改时间",
+          "type": "text"
+        },
+        {
+          "name": "state",
+          "label": "状态",
+          "sortable": true,
+          "type": "mapping",
+          "map": {
+            "2": "<span class='label label-warning'>停用</span>",
+            "0": "<span class='label label-success'>启用</span>"
+          }
+        }
+      ]
+    }
+  ]
+}

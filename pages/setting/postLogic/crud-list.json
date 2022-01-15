@@ -1,0 +1,161 @@
+{
+  "type": "page",
+  "title": "列表",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/setting/postLogic/crud/new",
+      "label": "新增",
+      "primary": true
+    }
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/postLogic",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量删除",
+          "type": "button",
+          "level": "danger",
+          "actionType": "ajax",
+          "api": "delete:/api/postLogic/$ids",
+          "confirmText": "确定要批量删除?"
+        }
+      ],
+      "headerToolbar": [
+        "filter-toggler",
+        "bulkActions",
+        {
+          "type": "tpl",
+          "tpl": "当前有 ${count} 条数据。",
+          "className": "v-middle"
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/subei12/team_oa_web/wiki/使用#帖子前置逻辑",
+          "body": "帖子前置逻辑使用说明",
+          "blank": true,
+          "htmlTarget": "_blank",
+          "className": "v-middle"
+        },
+        {
+          "type": "columns-toggler",
+          "align": "right"
+        },
+        {
+          "type": "drag-toggler",
+          "align": "right"
+        },
+        {
+          "type": "pagination",
+          "align": "right"
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "label": "序号",
+          "sortable": true
+        },
+        {
+          "name": "logic",
+          "label": "逻辑",
+          "sortable": true
+        },
+        {
+          "name": "logicDescription",
+          "label": "逻辑描述",
+          "sortable": true
+        },
+        {
+          "name": "prompt",
+          "label": "返回提示",
+          "sortable": true
+        },
+        {
+          "name": "createDate",
+          "label": "创建时间",
+          "sortable": true
+        },
+        {
+          "name": "updateDate",
+          "label": "修改时间",
+          "sortable": true
+        },
+        {
+          "name": "state",
+          "label": "状态",
+          "sortable": true,
+          "type": "mapping",
+          "map": {
+            "2": "<span class='label label-warning'>停用</span>",
+            "0": "<span class='label label-success'>启用</span>"
+          }
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                {
+                  "type": "button",
+                  "label": "查看",
+                  "level": "primary",
+                  "actionType": "link",
+                  "link": "/setting/postLogic/crud/${id}"
+                },
+                {
+                  "type": "button",
+                  "label": "修改",
+                  "level": "info",
+                  "actionType": "link",
+                  "link": "/setting/postLogic/crud/${id}/edit"
+                },
+                {
+                  "type": "button",
+                  "label": "删除",
+                  "level": "danger",
+                  "actionType": "ajax",
+                  "confirmText": "您确认要删除?",
+                  "api": "delete:/api/postLogic/$id"
+                }
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}
