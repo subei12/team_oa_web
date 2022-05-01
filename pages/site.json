@@ -181,6 +181,37 @@
                 "schemaApi": "get:/pages/setting/postLogic/crud-edit.json"
               }
             ]
+          },
+          {
+            "label": "功能权限",
+            "url": "/setting/permission/crud",
+            "rewrite": "/setting/permission/crud/list",
+            "icon": "fab fa-mendeley",
+            "vendor":"",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/setting/permission/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/setting/permission/crud-list.json"
+              },
+              {
+                "label": "新增",
+                "url": "/setting/permission/crud/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/setting/permission/crud-new.json"
+              },
+              {
+                "label": "查看",
+                "url": "/setting/permission/crud/:id",
+                "schemaApi": "get:/pages/setting/permission/crud-view.json"
+              },
+              {
+                "label": "修改",
+                "url": "/setting/permission/crud/:id/edit",
+                "schemaApi": "get:/pages/setting/permission/crud-edit.json"
+              }
+            ]
           }
         ]
       },

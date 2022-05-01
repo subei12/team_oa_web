@@ -1,0 +1,279 @@
+{
+  "title": "功能权限（URL-Permission）配置",
+  "body": {
+    "type": "crud",
+    "api": "/api/permissions",
+    "saveOrderApi": "/amis/api/mock2/form/saveData",
+    "expandConfig": {
+      "expand": "first"
+    },
+    "draggable": true,
+    "columns": [
+      {
+        "name": "id",
+        "label": "ID",
+        "sortable": true,
+        "type": "text",
+        "toggled": true,
+        "width": 100
+      },
+      {
+        "name": "name",
+        "label": "name",
+        "sortable": true,
+        "searchable": true,
+        "type": "text",
+        "toggled": true
+      },
+      {
+        "name": "url",
+        "label": "URL",
+        "sortable": true,
+        "type": "text",
+        "toggled": true
+      },
+      {
+        "name": "perms",
+        "label": "权限标识",
+        "sortable": true,
+        "type": "text",
+        "toggled": true
+      },
+      {
+        "name": "description",
+        "label": "权限描述",
+        "sortable": true,
+        "type": "text",
+        "toggled": true
+      },
+      {
+        "name": "orderNum",
+        "label": "顺序",
+        "sortable": true,
+        "type": "text",
+        "toggled": true
+      },
+      {
+        "name": "type",
+        "label": "类型",
+        "sortable": true,
+        "type": "mapping",
+        "map": {
+          "0": "<span class='label label-default'>⽬录</span>",
+          "1": "<span class='label label-info'>菜单</span>",
+          "2": "<span class='label label-success'>按钮</span>"
+        }
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "type": "button",
+            "icon": "fa fa-eye",
+            "actionType": "dialog",
+            "dialog": {
+              "title": "查看",
+              "body": {
+                "type": "form",
+                "body": [
+                  {
+                    "type": "static",
+                    "name": "id",
+                    "label": "id"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "name",
+                    "label": "name"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "url",
+                    "label": "URL"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "perms",
+                    "label": "权限标识"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "description",
+                    "label": "权限描述"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "name": "type",
+                    "label": "类型",
+                    "sortable": true,
+                    "type": "mapping",
+                    "map": {
+                      "0": "<span class='label label-default'>⽬录</span>",
+                      "1": "<span class='label label-info'>菜单</span>",
+                      "2": "<span class='label label-success'>按钮</span>"
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "name": "orderNum",
+                    "label": "顺序",
+                    "type": "static"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "createTime",
+                    "label": "createTime"
+                  }
+                  ,
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "updateTime",
+                    "label": "updateTime"
+                  }
+                  
+                ]
+              }
+            }
+          },
+          {
+            "type": "button",
+            "icon": "fa fa-pencil",
+            "actionType": "dialog",
+            "dialog": {
+              "title": "修改权限配置",
+              "actions": [
+                {
+                  "label": "取消",
+                  "actionType": "close",
+                  "type": "button"
+                },
+                {
+                  "label": "确认",
+                  "actionType": "confirm",
+                  "type": "button",
+                  "level": "primary"
+                }
+              ],
+              "body": {
+                "type": "form",
+                "name": "sample-edit-form",
+                "api": "put:/api/permission/$id",
+                "mode": "normal",
+                "controls": [
+                  {
+                    "type": "static",
+                    "name": "id",
+                    "label": "id"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "name",
+                    "label": "name",
+                    "required": true
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "url",
+                    "label": "URL",
+                    "required": true
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "perms",
+                    "label": "权限标识",
+                    "required": true
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "description",
+                    "label": "权限描述"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "parentId",
+                    "label": "上级Id"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "name": "orderNum",
+                    "label": "顺序",
+                    "type": "input-text"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "name": "type",
+                    "type": "radios",
+                    "label": "类型",
+                    "required": true,
+                    "options": [
+                      {
+                        "label": "⽬录",
+                        "value": "0"
+                      },
+                      {
+                        "label": "菜单",
+                        "value": "1"
+                      },
+                      {
+                        "label": "按钮",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "button",
+            "icon": "fa fa-times text-danger",
+            "actionType": "ajax",
+            "confirmText": "您确认要删除?",
+            "api": "delete:/api/permission/$id"
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

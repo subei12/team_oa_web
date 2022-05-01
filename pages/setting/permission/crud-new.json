@@ -1,0 +1,203 @@
+{
+  "type": "page",
+  "title": "新增权限",
+  "remark": null,
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/setting/permission/crud/list",
+      "label": "返回列表"
+    }
+  ],
+  "body": [
+    {
+      "title": "",
+      "type": "form",
+      "redirect": "/setting/permission/crud/list",
+      "name": "sample-edit-form",
+      "api": "/api/permission",
+      "controls": [
+        {
+          "label": "权限名称",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "权限名称",
+            "content": "描述这是什么接口，如：权限管理-新增。"
+          },
+          "description": "",
+          "validations": {},
+          "options": [],
+          "addOn": null,
+          "autoComplete": ""
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "权限描述",
+          "name": "description",
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "权限描述",
+            "content": "对这个接口的备注/忘。"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "URL",
+          "name": "url",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "url",
+            "content": "接口地址，与methor用==分割；如：/permissions==GET"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "权限标识",
+          "name": "perms",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "权限标识",
+            "content": "标记一个权限，如：system:permissions:list"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "父级权限Id",
+          "name": "parentId",
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "父级权限Id",
+            "content": "顾名思义,为空标识顶级权限（无父级）。"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "name": "type",
+          "type": "radios",
+          "label": "类型",
+          "required": true,
+          "value": "2",
+          "options": [
+            {
+              "label": "⽬录",
+              "value": "0"
+            },
+            {
+              "label": "菜单",
+              "value": "1"
+            },
+            {
+              "label": "按钮",
+              "value": "2"
+            }
+          ],
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "类型",
+            "content": "默认为按钮权限，其他暂时也只能作为分组使用。"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "排序",
+          "name": "orderNum",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "排序",
+            "content": "这个嘎嘎重要，用来影响各权限的排序，配置错误容易导致权限不正确。"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "icon",
+          "name": "icon",
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "icon",
+            "content": "填不填都不显示。"
+          },
+          "validations": {}
+        }
+      ]
+    }
+  ]
+}
