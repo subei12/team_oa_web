@@ -212,6 +212,36 @@
                 "schemaApi": "get:/pages/setting/permission/crud-edit.json"
               }
             ]
+          },
+          {
+            "label": "角色管理",
+            "url": "/setting/roles/crud",
+            "rewrite": "/setting/roles/crud/list",
+            "icon": "fa fa-magic",
+            "children": [
+              {
+                "label": "列表",
+                "url": "/setting/roles/crud/list",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/setting/roles/crud-list.json"
+              },
+              {
+                "label": "新增",
+                "url": "/setting/roles/crud/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/setting/roles/crud-new.json"
+              },
+              {
+                "label": "查看",
+                "url": "/setting/roles/crud/:id",
+                "schemaApi": "get:/pages/setting/roles/crud-view.json"
+              },
+              {
+                "label": "修改",
+                "url": "/setting/roles/crud/:id/edit",
+                "schemaApi": "get:/pages/setting/roles/crud-edit.json"
+              }
+            ]
           }
         ]
       },

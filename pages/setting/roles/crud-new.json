@@ -1,0 +1,97 @@
+{
+  "type": "page",
+  "title": "新增",
+  "remark": null,
+  "toolbar": [
+    {
+      "type": "button",
+      "actionType": "link",
+      "link": "/setting/roles/crud/list",
+      "label": "返回列表"
+    }
+  ],
+  "body": [
+    {
+      "title": "",
+      "type": "form",
+      "redirect": "/setting/roles/crud/list",
+      "name": "sample-edit-form",
+      "api": "/api/role",
+      "controls": [
+        {
+          "label": "角色名称",
+          "type": "text",
+          "name": "name",
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "角色名称",
+            "content": "如：admin"
+          },
+          "description": "",
+          "required": true,
+          "validations": {},
+          "options": [],
+          "addOn": null,
+          "autoComplete": ""
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "text",
+          "label": "角色描述",
+          "name": "description",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "角色描述",
+            "content": "如：管理员"
+          },
+          "validations": {}
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "input-tree",
+          "name": "permissionId",
+          "label": "分配权限",
+          "multiple": true,
+          "cascade": true,
+          "options": [],
+          "value": [],
+          "source": "get:/api/permissionsInputTree"
+        },
+        {
+          "type": "text",
+          "label": "角色等级",
+          "name": "level",
+          "required": true,
+          "remark": null,
+          "labelRemark": {
+            "icon": "fa fa-question-circle",
+            "trigger": [
+              "hover",
+              "focus"
+            ],
+            "className": "Remark--warning",
+            "title": "角色等级",
+            "content": "角色等级；2级可分配3级角色"
+          },
+          "validations": {}
+        }
+      ]
+    }
+  ]
+}

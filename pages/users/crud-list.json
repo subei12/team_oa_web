@@ -180,21 +180,13 @@
                           "label": "选择角色",
                           "name": "roles",
                           "options": [
-                            {
-                              "label": "超级管理员",
-                              "value": "superAdmin"
-                            },
-                            {
-                              "label": "管理员",
-                              "value": "admin"
-                            },
-                            {
-                              "label": "开发者",
-                              "value": "dev"
-                            }
+                            
+                          ],
+                          "value": [
+                            
                           ],
                           "className": "",
-                          "source": "/api/role",
+                          "source": "/api/roleCheckboxes?userId=$id",
                           "labelClassName": "",
                           "inputClassName": "",
                           "mode": "",
