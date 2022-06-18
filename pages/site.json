@@ -114,6 +114,12 @@
                 "schemaApi": "get:/pages/depts/crud-user-reward.json"
               },
               {
+                "label": "团队发帖情况",
+                "url": "/depts/crud/crud-list-posSituationt",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/depts/crud-list-posSituationt.json"
+              },
+              {
                 "label": "奖励日志",
                 "url": "/depts/crud/list-update",
                 "icon": "fa fa-list",
