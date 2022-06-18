@@ -78,7 +78,50 @@
           "type": "static",
           "label": "oa账户剩余葫芦",
           "name": "gourd"
+        },
+        {
+          "type": "button",
+          "label": "提取到社区账号",
+          "level": "primary",
+          "actionType": "dialog",
+          "dialog": {
+            "title": "提取到社区账号，请确认用户最新回复可以被赠送葫芦。",
+            "actions": [
+              {
+                "label": "取消",
+                "actionType": "close",
+                "type": "button"
+              },
+              {
+                "label": "确认",
+                "actionType": "confirm",
+                "type": "button",
+                "level": "primary"
+              }
+            ],
+            "body": {
+              "type": "form",
+              "api": "post:/api/user/gourd/withdrawal/$user_Id/$count",
+              "title": "常规模式",
+              "mode": "normal",
+              "controls": [
+                {
+                  "type": "input-text",
+                  "name": "user_Id",
+                  "label": "需要提取到的社区user_Id，输错导致送错人余额不退。",
+                  "required": true
+                },
+                {
+                  "type": "input-text",
+                  "name": "count",
+                  "label": "需要提取的数量，注意余额够不够。",
+                  "required": true
+                }
+              ]
+            }
+          }
         }
+        
       ]
     }
   ]
