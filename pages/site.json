@@ -114,10 +114,16 @@
                 "schemaApi": "get:/pages/depts/crud-user-reward.json"
               },
               {
-                "label": "奖励日志",
-                "url": "/depts/crud/list-update",
+                "label": "团队发帖情况",
+                "url": "/depts/crud/crud-list-posSituationt",
                 "icon": "fa fa-list",
-                "schemaApi": "get:/pages/depts/crud-list-update.json"
+                "schemaApi": "get:/pages/depts/crud-list-posSituationt.json"
+              },
+              {
+                "label": "奖励日志",
+                "url": "/depts/crud/list-sysSourceLog",
+                "icon": "fa fa-list",
+                "schemaApi": "get:/pages/depts/crud-list-sysSourceLog.json"
               }
             ]
           },

@@ -3,7 +3,7 @@
   "title": "查看详情 ${params.id}",
   "remark": null,
   "toolbar": [
-    {t
+    {
       "type": "button",
       "actionType": "link",
       "link": "/depts/crud/list",

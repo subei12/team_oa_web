@@ -1,0 +1,124 @@
+{
+  "type": "page",
+  "title": "各团队一个月内未发帖公示",
+  "remark": null,
+  "name": "page-demo",
+  "toolbar": [
+    
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/user/posSituationt",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+          {
+            "name": "deptId",
+            "label": "选择团队",
+            "type": "select",
+            "searchable": true,
+            "unique": true,
+            "source": "get:/api/depts"
+          },
+          {
+            "type": "submit",
+            "label": "搜索"
+          }
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "label": "批量修改",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "title": "批量编辑",
+            "name": "sample-bulk-edit",
+            "body": {
+              "type": "form",
+              "api": "/api/sample/bulkUpdate2",
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "engine",
+                  "label": "Engine"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "username",
+          "label": "userName",
+          "sortable": true
+        },
+        {
+          "name": "createTime",
+          "label": "createDate",
+          "sortable": true
+        },
+        {
+          "name": "hlxUserId",
+          "label": "社区用户ID",
+          "sortable": true
+        },
+        {
+          "name": "hlxUserNick",
+          "label": "社区用户昵称(不准)",
+          "sortable": true
+        },
+        {
+          "name": "qq",
+          "label": "绑定QQ",
+          "sortable": true
+        },
+        {
+          "name": "deptName",
+          "label": "所属团队",
+          "sortable": true
+        },
+        {
+          "name": "roleNames",
+          "label": "角色",
+          "sortable": true
+        },
+        {
+          "type": "operation",
+          "label": "操作",
+          "width": "",
+          "buttons": [
+            {
+              "type": "button-group",
+              "buttons": [
+                
+              ]
+            }
+          ],
+          "placeholder": "-",
+          "fixed": "right"
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}

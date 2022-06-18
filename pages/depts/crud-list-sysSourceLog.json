@@ -1,0 +1,130 @@
+{
+  "type": "page",
+  "title": "奖励日志",
+  "remark": null,
+  "name": "奖励日志",
+  "toolbar": [
+    
+  ],
+  "body": [
+    {
+      "type": "crud",
+      "name": "sample",
+      "api": "/api/sysSourceLogs",
+      "messages": {
+        "fetchSuccess": "请求成功，使用请求的msg覆盖消息"
+      },
+      "filter": {
+        "title": "",
+        "mode": "inline",
+        "wrapWithPanel": false,
+        "submitText": "",
+        "controls": [
+          {
+            "type": "text",
+            "name": "hlxUserId",
+            "label": "社区用户ID",
+            "placeholder": "葫芦侠（社区）用户ID",
+            "clearable": true
+          },
+          {
+            "label": "来源类型",
+            "type": "select",
+            "name": "type",
+            "clearable": "true",
+            "options": [
+              {
+                "label": "帖子直接结算",
+                "value": 1
+              },
+              {
+                "label": "oa账户提现",
+                "value": 2
+              },
+              {
+                "label": "团队自定义奖励",
+                "value": 3
+              },
+              {
+                "label": "团队成员自荐优质内容奖励",
+                "value": 4
+              }
+            ]
+          },
+          {
+            "type": "input-date",
+            "name": "startDate",
+            "label": "开始时间",
+            "format": "YYYY-MM-DD"
+          },
+          {
+            "type": "input-date",
+            "name": "endDate",
+            "label": "结束时间",
+            "format": "YYYY-MM-DD"
+          },
+          {
+            "type": "submit",
+            "label": "搜索"
+          }
+        ],
+        "className": "m-b-sm"
+      },
+      "bulkActions": [
+        {
+          "type": "tpl",
+          "tpl": "一共有 <span style = 'color : #4a90e2'> ${count} </span> 行数据。",
+          "className": "v-middle"
+        },
+        {
+          "type": "tpl",
+          "tpl": "一共消耗<span style = 'color : #9013fe'> ${totalSource} </span>葫芦。",
+          "className": "v-middle"
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "label": "ID",
+          "sortable": true
+        },
+        {
+          "name": "hlxUserId",
+          "label": "社区用户ID",
+          "sortable": true
+        },
+        {
+          "name": "source",
+          "label": "奖励数量",
+          "sortable": true
+        },
+        {
+          "name": "type",
+          "label": "状态",
+          "sortable": true,
+          "type": "mapping",
+          "map": {
+            "1": "<span class='label label-warning'>帖子直接结算</span>",
+            "2": "<span class='label label-success'>oa账户提现</span>",
+            "3": "<span class='label label-danger'>团队自定义奖励</span>",
+            "4": "<span class='label label-default'>团队成员自荐优质内容奖励</span>"
+          }
+        },
+        {
+          "name": "createDate",
+          "label": "奖励时间",
+          "sortable": true
+        }
+      ],
+      "affixHeader": true,
+      "columnsTogglable": "auto",
+      "placeholder": "暂无数据",
+      "tableClassName": "table-db table-striped",
+      "headerClassName": "crud-table-header",
+      "footerClassName": "crud-table-footer",
+      "toolbarClassName": "crud-table-toolbar",
+      "combineNum": 0,
+      "bodyClassName": "panel-default"
+    }
+  ]
+}
