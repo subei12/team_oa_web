@@ -91,11 +91,45 @@
               "buttons": [
                 {
                   "type": "button",
-                  "label": "查看",
+                  "label": "配置key",
                   "level": "primary",
-                  "actionType": "link",
-                  "link": "/users/crud/${id}"
-                },
+                  "actionType": "dialog",
+                  "dialog": {
+                    "title": "修改团队成员自定义奖励时使用的key",
+                    "actions": [
+                      {
+                        "label": "取消",
+                        "actionType": "close",
+                        "type": "button"
+                      },
+                      {
+                        "label": "确认",
+                        "actionType": "confirm",
+                        "type": "button",
+                        "level": "primary"
+                      }
+                    ],
+                    "body": {
+                      "type": "form",
+                      "api": "put:/api/dept/key/$id",
+                      "title": "常规模式",
+                      "mode": "normal",
+                      "controls": [
+                        {
+                          "type": "input-text",
+                          "name": "key",
+                          "label": "奖励时使用的key, 不配置使用系统默认的；已配置的key不允许查看。",
+                          "required": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "button-group",
+              "buttons": [
                 {
                   "type": "button",
                   "label": "修改预算",
