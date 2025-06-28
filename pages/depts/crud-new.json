@@ -1,6 +1,6 @@
 {
   "type": "page",
-  "title": "新增",
+  "title": "新增部门",
   "remark": null,
   "toolbar": [
     {
@@ -15,13 +15,14 @@
       "title": "",
       "type": "form",
       "redirect": "/depts/crud/list",
-      "name": "sample-edit-form",
-      "api": "/api/user",
+      "name": "dept-add-form",
+      "api": "post:/api/dept",
       "controls": [
         {
-          "label": "社区用户ID",
+          "label": "部门名称",
           "type": "text",
-          "name": "hlxUserId",
+          "name": "name",
+          "required": true,
           "labelRemark": {
             "icon": "fa fa-question-circle",
             "trigger": [
@@ -29,69 +30,27 @@
               "focus"
             ],
             "className": "Remark--warning",
-            "title": "社区用户ID",
-            "content": "社区用户ID，不可为空"
-          },
-          "description": "",
-          "required": true,
-          "validations": {},
-          "options": [],
-          "addOn": null,
-          "autoComplete": ""
+            "title": "部门名称",
+            "content": "请输入部门名称"
+          }
         },
         {
-          "type": "divider"
-        },
-        {
-          "type": "text",
-          "label": "社区用户昵称",
-          "name": "hlxUserNick",
+          "type": "radios",
+          "label": "结算状态",
+          "name": "settlementState",
+          "value": 1,
+          "options": [
+            { "label": "可以结算", "value": 0 },
+            { "label": "不可结算", "value": 1 }
+          ],
           "required": true,
-          "remark": null,
           "labelRemark": {
             "icon": "fa fa-question-circle",
-            "trigger": [
-              "hover",
-              "focus"
-            ],
+            "trigger": ["hover", "focus"],
             "className": "Remark--warning",
-            "title": "昵称",
-            "content": "这个不是很重要，但说不定以后会用来模糊查询。"
-          },
-          "validations": {}
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "name": "deptId",
-          "label": "选择团队",
-          "type": "select",
-          "searchable": true,
-          "unique": true,
-          "required": true,
-          "source": "get:/api/depts"
-        },
-        {
-          "type": "divider"
-        },
-        {
-          "type": "text",
-          "label": "联系QQ（必填）",
-          "name": "qq",
-          "required": true,
-          "remark": null,
-          "labelRemark": {
-            "icon": "fa fa-question-circle",
-            "trigger": [
-              "hover",
-              "focus"
-            ],
-            "className": "Remark--warning",
-            "title": "QQ",
-            "content": "联系QQ，这个是必须的，一定要填。"
-          },
-          "validations": {}
+            "title": "结算状态",
+            "content": "新增时默认不可结算，可选可结算或不可结算。"
+          }
         }
       ]
     }

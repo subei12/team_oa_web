@@ -56,7 +56,7 @@
           "type": "button",
           "level": "danger",
           "actionType": "ajax",
-          "api": "delete:/api/user/$ids",
+          "api": "delete:/api/dept/$ids",
           "confirmText": "确定要批量删除?"
         }
       ],
@@ -181,7 +181,7 @@
                   "level": "danger",
                   "actionType": "ajax",
                   "confirmText": "您确认要删除?",
-                  "api": "delete:/api/user/$id"
+                  "api": "delete:/api/dept/$id"
                 }
               ]
             }

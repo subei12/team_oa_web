@@ -108,6 +108,12 @@
                 "schemaApi": "get:/pages/depts/crud-list.json"
               },
               {
+                "label": "新增部门",
+                "url": "/depts/crud/new",
+                "icon": "fa fa-plus",
+                "schemaApi": "get:/pages/depts/crud-new.json"
+              },
+              {
                 "label": "团队自定义奖励",
                 "url": "/depts/crud/user-reward",
                 "icon": "fa fa-list",
