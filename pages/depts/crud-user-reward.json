@@ -27,7 +27,8 @@
               "name": "file",
               "label": "上传Excel文件",
               "accept": ".xls,.xlsx",
-              "required": true
+              "required": true,
+              "asBlob": true
             }
           ]
         },
