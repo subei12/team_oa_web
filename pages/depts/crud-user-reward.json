@@ -4,7 +4,45 @@
   "remark": null,
   "name": "page-demo",
   "toolbar": [
-    
+    {
+      "type": "button",
+      "label": "批量结算",
+      "level": "primary",
+      "actionType": "dialog",
+      "dialog": {
+        "title": "批量结算",
+        "body": {
+          "type": "form",
+          "api": {
+            "method": "post",
+            "url": "/api/user/batch/reward",
+            "dataType": "form-data",
+            "data": {
+              "&": "$$"
+            }
+          },
+          "controls": [
+            {
+              "type": "file",
+              "name": "file",
+              "label": "上传Excel文件",
+              "accept": ".xls,.xlsx",
+              "required": true
+            }
+          ]
+        },
+        "onEvent": {
+          "submitSucc": {
+            "actions": [
+              {
+                "actionType": "custom",
+                "script": "let result = event.data.result; let html = '<h3>批量结算结果：</h3><ul>'; for(let i = 0; i < result.length; i++) { html += '<li>' + result[i] + '</li>'; } html += '</ul>'; amis.alert(html);"
+              }
+            ]
+          }
+        }
+      }
+    }
   ],
   "body": [
     {
